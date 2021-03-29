@@ -10,13 +10,14 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using GameStore.Interfaces;
 
 namespace GameStore.Controllers
 {
     public class AccountController : Controller
     {
-        private StoreContext db;
-        public AccountController(StoreContext context)
+        private IStore db;
+        public AccountController(IStore context)
         {
             db = context;
         }
@@ -33,7 +34,7 @@ namespace GameStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Email == login._Email && u.Password == login._Password);
+                User user = await db.GetUserAsync(login);
                 if(user != null)
                 {
                     await Authenticate(user);
@@ -51,13 +52,13 @@ namespace GameStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                List<User> users = await db.GetUsersAsync();
+                User user = users.FirstOrDefault(u => u.Email == model.Email);
                 if (user == null)
                 {
-                    Role userRole = await db.Roles.FirstOrDefaultAsync(r => r.Name == "user");
+                    Role userRole = await db.GetUserRoleAsync();
                     user = new User { Email = model.Email, Password = model.Password, Name = model.Name, Role = userRole};
-                    db.Users.Add(user);
-                    await db.SaveChangesAsync();
+                    await db.SetUserAsync(user);
 
                     await Authenticate(user); 
 
@@ -78,7 +79,7 @@ namespace GameStore.Controllers
         [AcceptVerbs("Get", "Post")]
         public IActionResult CheckEMail(string email)
         {
-            return Json(!db.Users.Any(u => u.Email == email));
+            return Json(db.ChackEmail(email));
         }
 
         private async Task Authenticate(User user)

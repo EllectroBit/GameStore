@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using GameStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using GameStore.Interfaces;
+using GameStore.Infrastructure;
 
 namespace GameStore
 {
@@ -28,6 +30,7 @@ namespace GameStore
         {
             services.AddDbContext<StoreContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+            services.AddScoped<IStore, EF_Store>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>

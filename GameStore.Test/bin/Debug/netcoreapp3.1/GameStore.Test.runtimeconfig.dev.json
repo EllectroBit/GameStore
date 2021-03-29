@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\EllectroBit\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\EllectroBit\\.nuget\\packages"
-    ]
-  }
-}
