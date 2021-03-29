@@ -1,0 +1,296 @@
+/*Content*/
+
+.content{
+	display: inline-block;
+	width: 81%;
+	height: 75%;
+	background-color: #181818;
+
+	position: absolute;
+	top: 25%;
+	left: 19%;
+	right: 0;
+	z-index: 0;
+}
+
+.item{
+	margin: 4% 5% 0 5%;
+
+	display: inline-block;
+	border-radius: 0 10px 10px 0;
+
+	height: 20%;
+	width: 20%;
+	position: relative;
+
+	background-color: #D6D6D6;
+
+	box-shadow: 0 0 10px #FF00F6;
+}
+
+.item img{
+	height: 100%;
+	width: 35%;
+	display: inline-block;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+#gameName{
+	height: 30%;
+	width: 100%;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 1;
+
+	text-align: center;
+	font-size: 1.5vh;
+	font-weight: 700;
+}
+
+#gameName a{
+	color: white;
+	font-size: 1.8vh;
+
+	transition: color .3s linear;
+}
+
+#gameName a:hover{
+	color: #FF00F6;
+}
+
+#gameYear{
+	height: 20%;
+	width: 60%;
+
+	position: absolute;
+	top: 0;
+	left: 40%;
+	right: 0;
+	z-index: 1;
+}
+
+#gameDeveloper{
+	height: 30%;
+	width: 60%;
+
+	position: absolute;
+	top: 20%;
+	left: 40%;
+	right: 0;
+	z-index: 1;
+
+	line-height: 1;
+}
+
+#gameDeveloper span{
+	display: block;
+}
+
+.gameAttribute{
+	font-size: 1.5vh;
+}
+
+.gameAttribute span{
+	font-size: 1.8vh;
+	font-weight: 700;
+}
+
+#PosRating{
+	height: 20%;
+	width: 60%;
+
+	position: absolute;
+	top: 50%;
+	left: 38%;
+	right: 0;
+	z-index: 1;
+}
+
+#NegRating{
+	height: 20%;
+	width: 60%;
+
+	position: absolute;
+	top: 70%;
+	left: 38%;
+	right: 0;
+	z-index: 1;
+}
+
+.symbol, .num{
+	display: inline-block;
+}
+
+.Rating{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+
+	position: relative;
+}
+
+.symbol{
+	height: 100%;
+	width: 20%;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+
+	background-color: #048236;
+	color: white;
+
+	border-top-left-radius: 10px;
+	font-size: 2vh;
+}
+
+.num{
+	height: 100%;
+	width: 80%;
+
+	position: absolute;
+	top: 0;
+	left: 20%;
+	right: 0;
+	z-index: 2;
+
+	background-color: #06FF00;
+
+	border-top-right-radius: 100px;
+	font-size: 2vh;
+}
+
+#NegRating .symbol{
+	background-color: #9F0000;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 0;
+}
+
+#NegRating .num{
+	background-color: red;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 100px;
+}
+
+#addBt{
+	position: absolute;
+	top: 20%;
+	left: 80%;
+	right: 0;
+	z-index: 2;
+
+	font-size: 5vh;
+	text-align: center;
+
+	display: block;
+	background-color: #181818;
+	border-radius: 50px 0 0 0;
+
+	color: #06FF00;
+}
+
+
+/*Menu*/
+
+.menu{
+	display: inline-block;
+	width: 20%;
+	height: 80%;
+	border-top-right-radius: 50px;
+
+	position: absolute;
+	top: 20%;
+	left: 0;
+	right: 0;
+	z-index: 1;
+
+	background-color: #000000;
+	color: white;
+}
+
+.menu h2{
+	text-align: center;
+	text-decoration: underline;
+	text-decoration-color: #FF00F6;
+	font-size: 4vh;
+}
+
+.list{
+	font-size: 3vh;
+	vertical-align: middle;
+	margin-left: 5%;
+}
+
+.li_element a{
+	color: white;
+	background-color: black;
+
+	transition: color .5s linear;
+}
+
+.li_element a:hover{
+	background-color: #06FF00;
+	color: black;
+}
+
+/*Pages*/
+
+.pages {
+	height: 6%;
+	width: 20%;
+	position: absolute;
+	top: 94%;
+	left: 30%;
+	right: 0;
+	z-index: 1;
+}
+
+.pages a{
+	text-align: center;
+	vertical-align: middle;
+
+	line-height: 1;
+	height: 50%;
+	width: 30%;
+	display: inline-block;
+
+	border-radius: 10px;
+
+	font-size: 3vh;
+	background-color: #06FF00;
+
+	transition: all .3s linear;
+}
+
+.pages a:hover{
+	font-size: 3vh;
+	color: #06FF00;
+	background-color: black;
+}
+
+.pages span{
+	text-align: center;
+	vertical-align: middle;
+
+	line-height: 1;
+	height: 50%;
+	width: 30%;
+	display: inline-block;
+
+	border-radius: 10px;
+
+	font-size: 3vh;
+	color: #06FF00;
+	background-color: black;
+}

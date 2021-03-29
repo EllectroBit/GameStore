@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GameStore.Models.Game>
+@using GameStore.Models;
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+    <div>
+        <div class="menu">
+            <h2>Genre:</h2>
+            <ul class="list">
+                @foreach (Genre g in Enum.GetValues(typeof(Genre)))
+                {
+                    <li class="li_element"><a asp-controller="Store" asp-action="Filter" asp-route-str="@g">@g</a></li>
+                }
+            </ul>
+        </div>
+
+        @if (User.IsInRole("admin"))
+        {
+            <a id="addBt" asp-action="Add" asp-controller="Store">+</a>
+        }
+
+        <div class="content">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (Game g in Model)
+                {
+                    <div class="item">
+                        <a asp-controller="Store" asp-action="About" asp-route-id="@g.ID"><img src="data:image/jpeg;base64,@(Convert.ToBase64String(g.Img))" alt=""></a>
+                        <div id="gameName"><a asp-controller="Store" asp-action="About" asp-route-id="@g.ID">@g.Name</a></div>
+                        <div class="gameAttribute" id="gameYear"><span>Year:</span> @g.Year</div>
+                        <div class="gameAttribute" id="gameDeveloper"><span>Genre:</span> @g.Genre</div>
+                        <div id="PosRating">
+                            <div class="Rating">
+                                <div class="symbol">+</div>
+                                <div class="num">@g.Positive</div>
+                            </div>
+                        </div>
+                        <div id="NegRating">
+                            <div class="Rating">
+                                <div class="symbol">-</div>
+                                <div class="num">@g.Negative</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <div class="pages">
+            @if ((bool)ViewData["IsBack"])
+            {
+                if (ViewData["str"] == null)
+                {
+                    <a asp-action="@ViewData["action"]" asp-controller="Store" asp-route-page="@((int)ViewData["Page"] - 1)">Back</a>
+                }
+                else
+                {
+                    <a asp-action="@ViewData["action"]" asp-controller="Store" asp-route-page="@((int)ViewData["Page"] - 1)" asp-route-str="@ViewData["str"]">Back</a>
+                }
+
+            }
+            <span>@((int)ViewData["Page"])</span>
+            @if ((bool)ViewData["IsNext"])
+            {
+                if (ViewData["str"] == null)
+                {
+                    <a asp-action="@ViewData["action"]" asp-controller="Store" asp-route-page="@((int)ViewData["Page"] + 1)">Next</a>
+                }
+                else
+                {
+                    <a asp-action="@ViewData["action"]" asp-controller="Store" asp-route-page="@((int)ViewData["Page"] + 1)" asp-route-str="@ViewData["str"]">Next</a>
+                }
+            }
+        </div>
+    </div>

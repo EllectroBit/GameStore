@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GameStore</title>
+    <link rel="shortcut icon" href="~/icon.ico"/>
+    <link href="~/css/style.css?v=@DateTime.Now.Millisecond" rel="stylesheet" />
+    <link href="~/css/index_style.css?v=@DateTime.Now.Millisecond" rel="stylesheet" />
+    <link href="~/css/about_style.css?v=@DateTime.Now.Millisecond" rel="stylesheet" />
+    <link href="~/css/edit_style.css?v=@DateTime.Now.Millisecond" rel="stylesheet" />
+    <link href="~/css/login_style.css?v=@DateTime.Now.Millisecond" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+</head>
+<body>
+    <header>
+        <div id="logo"><a asp-controller="Store" asp-action="Index"><span id="logoPart">Game</span> <span id="logoPart">Store</span></a></div>
+        <nav>
+            <a asp-controller="Store" asp-action="Index" class="navigation">Store</a>
+            <a asp-controller="Store" asp-action="MyGames" class="navigation">My Games</a>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Index" class="navigation">Login</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Logout" class="navigation">@User.FindFirst("Name").Value</a>
+            }
+        </nav>
+    </header>
+    <div>
+        <div class="search">
+            <form asp-controller="Store" asp-action="Search">
+                <input name="str" autocomplete="off" id="searchText" type="text">
+                <input id="searchSubmit" type="submit" value="Search">
+            </form>
+        </div>
+        @RenderBody()
+    </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            @RenderSection("Scripts", required: false)
+</body>
+</html>

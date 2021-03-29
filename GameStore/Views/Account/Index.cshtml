@@ -1,0 +1,38 @@
+﻿@model GameStore.Models.ViewModels.RegisterViewModels
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="LoginForm">
+    <form asp-action="Login" asp-controller="Account">
+        <div class="lable" id="Login_lable">Login</div>
+        <div class="lable" id="name_lable">Email</div>
+        <input name="_Email" id="name" autocomplete="off" type="text" class="input_text">
+        <div class="lable" id="pass_lable">Password</div>
+        <input name="_Password" id="pass" autocomplete="off" type="password" class="input_text">
+        <input type="submit" id="ligin_submit" class="submit" value="Submit">
+    </form>
+</div>
+<div class="RegForm">
+    <form asp-action="Register" asp-controller="Account">
+        <div class="lable" id="Registaration_lable">Registration</div>
+        <div class="lable" id="rg_name_lable">Name</div>
+        <input asp-for="Name" id="rg_name" autocomplete="off" type="text" class="input_text">
+        <span asp-validation-for="Name" id="rg_name_validation" class="validationError"></span>
+        <div class="lable" id="rg_email_lable">Email</div>
+        <input asp-for="Email" id="rg_email" autocomplete="off" type="text" class="input_text">
+        <span asp-validation-for="Email" id="rg_email_validation" class="validationError"></span>
+        <div class="lable" id="rg_pass_lable">Password</div>
+        <input asp-for="Password" id="rg_pass" autocomplete="off" type="password" class="input_text">
+        <span asp-validation-for="Password" id="rg_pass_validation" class="validationError"></span>
+        <div class="lable" id="rg_pass_conf_lable">Password Confirm</div>
+        <input asp-for="PasswordConfirm" id="rg_pass_conf" autocomplete="off" type="password" class="input_text">
+        <span asp-validation-for="PasswordConfirm" id="rg_pass_conf_validation" class="validationError"></span>
+        <input type="submit" id="rg_ligin_submit" class="submit" value="Submit">
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

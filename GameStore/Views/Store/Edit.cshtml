@@ -1,0 +1,49 @@
+﻿@model GameStore.Models.ViewModels.GameViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="edit_content">
+    <div class="edit_form">
+        <form asp-action="Edit" asp-controller="Store" enctype="multipart/form-data">
+            <div class="lable">Game Name:</div>
+            <input autocomplete="off" asp-for="Name" value="@Model.Name" type="text" class="input_text">
+            <span asp-validation-for="Name" class="validationError"></span>
+            <div class="lable">Game Year:</div>
+            <input autocomplete="off" asp-for="Year" value="@Model.Year" type="number" class="input_text">
+            <span asp-validation-for="Year" class="validationError"></span>
+            <div class="lable">Positive:</div>
+            <input autocomplete="off" asp-for="Positive" value="@Model.Positive" type="number" class="input_text">
+            <span asp-validation-for="Positive" class="validationError"></span>
+            <div class="lable">Negative:</div>
+            <input autocomplete="off" asp-for="Negative" value="@Model.Negative" type="number" class="input_text">
+            <span asp-validation-for="Negative" class="validationError"></span>
+            <div class="lable">Picture:</div>
+            <input asp-for="Img" type="file" accept="image/x-png,image/jpeg">
+            <span class="validationError"></span>
+            <div class="lable">Genre:</div>
+            <select asp-for="Genre" id="">
+                @foreach (Genre g in Enum.GetValues(typeof(Genre)))
+                {
+                    if (Model.Genre == g)
+                    {
+                        <option selected>@g</option>
+                    }
+                    else
+                    {
+                        <option>@g</option>
+                    }
+                 }
+            </select>
+            <div class="lable">Description:</div>
+            <textarea id="D" autocomplete="off" asp-for="Description" cols="30" rows="30">@Model.Description</textarea>
+            <span asp-validation-for="Description" class="validationError"></span>
+            <input type="submit" class="edit_submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
