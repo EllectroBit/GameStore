@@ -31,7 +31,7 @@ namespace GameStore.Controllers
         [Authorize]
         public IActionResult About(int id)
         {
-            return View(db.GetGames().FirstOrDefault(g => g.ID == id));
+            return View(db.GetGame(id));
         }
 
         [HttpGet]
